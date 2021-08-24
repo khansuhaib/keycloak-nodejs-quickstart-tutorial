@@ -6,11 +6,14 @@ const join = require('path').join
 
 // You can get this from the "Installation" tab of your Realm (app) in Keycloak
 const keycloakConf = {
-  "realm": "TestApp",
+  "realm": "Basic",
   "bearer-only": true,
   "auth-server-url": "https://keycloak-keycloak.apps-crc.testing/auth",
   "ssl-required": "external",
-  "resource": "Mobile Backend",
+  "resource": "client-secret-nodejs",
+  "credentials": {
+    "secret": "client-secret"
+  },
   "confidential-port": 0
 }
 
