@@ -8,7 +8,7 @@ const join = require('path').join
 const keycloakConf = {
   "realm": "Basic",
   "bearer-only": true,
-  "auth-server-url": "https://keycloak-keycloak.apps-crc.testing/auth",
+  "auth-server-url": "https://keycloak-keycloak.apps-crc.testing/auth/",
   "ssl-required": "external",
   "resource": "client-secret-nodejs",
   "credentials": {
