@@ -1,8 +1,10 @@
 {
-  "realm": "TestApp",
+  "realm": "basic",
   "auth-server-url": "https://keycloak-keycloak.apps-crc.testing/auth/",
   "ssl-required": "external",
-  "resource": "Mobile Application",
-  "public-client": true,
+  "resource": "client-secret-nodejs",
+  "credentials": {
+    "secret": "client-secret"
+  },
   "confidential-port": 0
 }
