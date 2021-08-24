@@ -8,7 +8,7 @@ const join = require('path').join
 const keycloakConf = {
   "realm": "TestApp",
   "bearer-only": true,
-  "auth-server-url": "http://localhost:8080/auth",
+  "auth-server-url": "https://keycloak-keycloak.apps-crc.testing/auth",
   "ssl-required": "external",
   "resource": "Mobile Backend",
   "confidential-port": 0
