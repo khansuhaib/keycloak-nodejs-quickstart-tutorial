@@ -6,5 +6,7 @@
   "credentials": {
     "secret": "ecaf26d6-cb76-4cd8-ab1b-38309a5610fc"
   },
-  "confidential-port": 0
+  "confidential-port": 0,
+  "enable-cors": false,
+  "clientId": "web-app1"
 }
