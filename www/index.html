@@ -29,13 +29,19 @@
     <script>
       var kc = Keycloak();
 
-      kc.init()
-        .success(function(authenticated) {
+      kc.init().then(function(authenticated) {
+          alert(authenticated ? 'authenticated' : 'not authenticated');
           console.log('keycloak initialised')
-        })
-        .error(function() {
+        }).catch(function() {
           console.error('failed to initialize keycloak');
         });
+      
+      
+     // keycloak.init().then(function(authenticated) {
+     //           alert(authenticated ? 'authenticated' : 'not authenticated');
+     //       }).catch(function() {
+     //           alert('failed to initialize');
+     //       });
 
       setTimeout(() => {
         var rawEl = document.getElementById('kc-token-raw')
