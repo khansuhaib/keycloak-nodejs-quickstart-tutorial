@@ -1,6 +1,6 @@
 {
   "realm": "myrealm",
-  "auth-server-url": "http://keycloak-keycloak2.apps-crc.testing/auth/",
+  "auth-server-url": "https://keycloak-keycloak2.apps-crc.testing/auth/",
   "ssl-required": "external",
   "resource": "web-app1",
   "credentials": {
