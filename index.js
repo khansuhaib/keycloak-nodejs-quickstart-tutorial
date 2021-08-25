@@ -7,7 +7,7 @@ const join = require('path').join
 // You can get this from the "Installation" tab of your Realm (app) in Keycloak
 const keycloakConf = {
   "realm": "myrealm",
-  "auth-server-url": "https://keycloak-keycloak2.apps-crc.testing/auth/",
+  "auth-server-url": "http://keycloak-keycloak2.apps-crc.testing/auth/",
   "ssl-required": "external",
   "resource": "web-app1",
   "credentials": {
