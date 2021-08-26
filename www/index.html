@@ -41,9 +41,9 @@
               $('#status').html($('<pre>SSO Authenticated ✅</pre>'));
                var rawEl = document.getElementById('kc-token-raw')
                var parsedEl = document.getElementById('kc-token-data')
-               if (kc.token) {
-                 rawEl.innerHTML = kc.token
-                 parsedEl.innerHTML = JSON.stringify(kc.tokenParsed, null, 2)
+               if (window.keycloak.token) {
+                 rawEl.innerHTML = window.keycloak.token
+                 parsedEl.innerHTML = JSON.stringify(window.keycloak.tokenParsed, null, 2)
                } else {
                  rawEl.innerHTML = 'Please login to display raw token.'
                  parsedEl.innerHTML = 'Please login to display token data.'
