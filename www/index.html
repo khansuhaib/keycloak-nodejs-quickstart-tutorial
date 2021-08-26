@@ -20,14 +20,14 @@
 
       <br>
       <br>
-
+      <div id="status"></div>
       <h4>KeyCloak Token</h4>
       <pre id="kc-token-raw"></pre>
 
       <h4>KeyCloak Token Data</h4>
       <pre id="kc-token-data"></pre>
     </div>
-          <div id="status"></div>
+        
  
        <script>
       $(function () {
@@ -39,6 +39,15 @@
          .then(function (authenticated) {
             if (authenticated) {
               $('#status').html($('<pre>SSO Authenticated ✅</pre>'));
+               var rawEl = document.getElementById('kc-token-raw')
+               var parsedEl = document.getElementById('kc-token-data')
+               if (kc.token) {
+                 rawEl.innerHTML = kc.token
+                 parsedEl.innerHTML = JSON.stringify(kc.tokenParsed, null, 2)
+               } else {
+                 rawEl.innerHTML = 'Please login to display raw token.'
+                 parsedEl.innerHTML = 'Please login to display token data.'
+               }
             } else {
               $('#status').html($('<pre>SSO Not Authenticated 🔥</pre>'));
             }
