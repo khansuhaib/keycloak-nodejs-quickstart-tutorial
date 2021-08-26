@@ -5,7 +5,10 @@
     <script>
         function initKeycloak() {
           //  var keycloak = new Keycloak();
-            window.keycloak.init().then(function(authenticated) {
+            window.keycloak.init({
+            flow: 'implicit',
+            onLoad: 'login-required',
+          }).then(function(authenticated) {
                 alert(authenticated ? 'authenticated' : 'not authenticated');
             }).catch(function() {
                 alert('failed to initialize');
