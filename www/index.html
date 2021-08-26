@@ -3,6 +3,7 @@
     <title>Test Application</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="http://zeptojs.com/zepto.min.js"></script>
     <script src="https://keycloak-keycloak2.apps-crc.testing/auth/js/keycloak.js"></script>
     <script src="http://keycloak-nodejs-quickstart-tutorial-git-keytest.apps-crc.testing/app.js"></script>
   </head>
@@ -26,8 +27,45 @@
       <h4>KeyCloak Token Data</h4>
       <pre id="kc-token-data"></pre>
     </div>
+          <div id="status"></div>
+ 
+       <script>
+      $(function () {
+        window.keycloak
+          .init({
+            flow: 'implicit',
+            onLoad: 'login-required',
+          })
+         .then(function (authenticated) {
+            if (authenticated) {
+              $('#status').html($('<pre>SSO Authenticated ✅</pre>'));
+            } else {
+              $('#status').html($('<pre>SSO Not Authenticated 🔥</pre>'));
+            }
+          })
+          .catch(function () {
+            console.log('failed to initialize');
+          });
+        $('#login').on('click', function (e) {
+          e.preventDefault();
 
-    <script>
+          window.keycloak.login({
+            redirectUri: 'http://localhost:8091/me.html',
+          });
+        });
+        $('#logout').on('click', function (e) {
+          e.preventDefault();
+
+          window.keycloak.logout({
+            redirectUri: 'http://localhost:8091/index.html',
+          });
+        });
+      });
+    </script>
+      
+      
+      <script>  
+      /*
       var kc = window.keycloak;
 
       kc.init().then(function(authenticated) {
@@ -37,13 +75,13 @@
           console.error('failed to initialize keycloak');
         });
       
-      
+      */
      // keycloak.init().then(function(authenticated) {
      //           alert(authenticated ? 'authenticated' : 'not authenticated');
      //       }).catch(function() {
      //           alert('failed to initialize');
      //       });
-
+   /*
       setTimeout(() => {
         var rawEl = document.getElementById('kc-token-raw')
         var parsedEl = document.getElementById('kc-token-data')
@@ -57,7 +95,7 @@
         }
 
       }, 1000)
-
+*/
       function testApiAccess () {
         var url = 'http://keycloak-nodejs-quickstart-tutorial-git-keytest.apps-crc.testing/ping-protected'
 
@@ -78,20 +116,19 @@
 
         req.send()
       }
-
       function doLogout () {
-        if (!kc.token) {
+        if (! window.keycloak.token) {
           alert('not logged in, so we cannot logout')
         } else {
-          kc.logout()
+           window.keycloak.logout()
         }
       }
 
       function doLogin () {
-        if (kc.token) {
+        if ( window.keycloak.token) {
           alert('already logged in')
         } else {
-          kc.login()
+           window.keycloak.login()
         }
       }
     </script>
