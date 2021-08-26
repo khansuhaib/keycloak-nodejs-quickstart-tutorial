@@ -72,46 +72,13 @@
       });
     </script>
       
-      
-      <script>  
-      /*
-      var kc = window.keycloak;
-
-      kc.init().then(function(authenticated) {
-          alert(authenticated ? 'authenticated' : 'not authenticated');
-          console.log('keycloak initialised')
-        }).catch(function() {
-          console.error('failed to initialize keycloak');
-        });
-      
-      */
-     // keycloak.init().then(function(authenticated) {
-     //           alert(authenticated ? 'authenticated' : 'not authenticated');
-     //       }).catch(function() {
-     //           alert('failed to initialize');
-     //       });
-   /*
-      setTimeout(() => {
-        var rawEl = document.getElementById('kc-token-raw')
-        var parsedEl = document.getElementById('kc-token-data')
-
-        if (kc.token) {
-          rawEl.innerHTML = kc.token
-          parsedEl.innerHTML = JSON.stringify(kc.tokenParsed, null, 2)
-        } else {
-          rawEl.innerHTML = 'Please login to display raw token.'
-          parsedEl.innerHTML = 'Please login to display token data.'
-        }
-
-      }, 1000)
-*/
-      function testApiAccess () {
+     function testApiAccess () {
         var url = 'http://keycloak-nodejs-quickstart-tutorial-git-keytest.apps-crc.testing/ping-protected'
 
         var req = new XMLHttpRequest()
 
         req.open('GET', url, true)
-        req.setRequestHeader('authorization', 'Bearer ' + kc.token)
+        req.setRequestHeader('authorization', 'Bearer ' + window.keycloak.token)
 
         req.onreadystatechange = function () {
           if (req.readyState === 4) {
